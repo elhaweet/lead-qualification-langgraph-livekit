@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0f17" />
+    <title>Outbound Call Campaign</title>
+    <link rel="stylesheet" href="/frontend/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- header: add theme toggle next to run badge -->
+      <header>
+        <div class="title">Outbound Call Campaign</div>
+        <div class="header-actions">
+          <div id="runBadge" class="badge idle">Idle</div>
+          <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+            <span id="themeIcon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Accent ribbon -->
+      <div class="ribbon" aria-hidden="true"></div>
+
+      <!-- Metric chips -->
+      <div class="chips">
+        <div class="chip">
+          <span class="chip-label">Total</span>
+          <span id="chipTotal" class="chip-value">0</span>
+        </div>
+        <div class="chip">
+          <span class="chip-label">Completed</span>
+          <span id="chipCompleted" class="chip-value">0</span>
+        </div>
+        <div class="chip">
+          <span class="chip-label">Failed</span>
+          <span id="chipFailed" class="chip-value">0</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Upload CSV of Phone Numbers</h2>
+        <form id="uploadForm" enctype="multipart/form-data" method="post" action="/upload">
+          <div class="row">
+            <input id="fileInput" type="file" name="file" accept=".csv" required />
+            <button id="startBtn" type="submit">Start Campaign</button>
+          </div>
+          <small>Header recommended: <b>phone</b> (accepts <i>phone_number</i>, <i>number</i>, or first column).</small>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Status</h3>
+        <div class="stats">
+          <div class="stat"><div class="label">Total</div><div id="statTotal" class="value">0</div></div>
+          <div class="stat"><div class="label">Completed</div><div id="statCompleted" class="value">0</div></div>
+          <div class="stat"><div class="label">Failed</div><div id="statFailed" class="value">0</div></div>
+        </div>
+        <div class="progress"><div id="bar" class="bar"></div></div>
+        <div id="status"></div>
+        
+        <!-- Legend -->
+        <div class="legend">
+          <span class="pill pending">Pending</span>
+          <span class="pill running">Running</span>
+          <span class="pill done">Done</span>
+          <span class="pill failed">Failed</span>
+        </div>
+        
+        <div style="margin-top:12px">
+          <h3>Numbers</h3>
+          <div id="numbers" class="list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toasts -->
+    <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+    <script defer src="/frontend/app.js"></script>
+  </body>
+</html>

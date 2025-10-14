@@ -1,0 +1,21 @@
+
+## Steps to outbound call from Langgraph Agent 
+uv run python langgraph_voice_agent.py start
+uv run python langgraph_make_call.py 
+OR
+uv run python campaign_server.py
+
+## Run Langgraph Agent from the the terminal
+uv run python langgraph_voice_agent.py console
+
+
+
+
+
+
+
+## Kill any existing Python processes
+taskkill /IM python.exe /F
+
+## List existing LiveKit processes
+tasklist | findstr python
