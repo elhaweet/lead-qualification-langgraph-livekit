@@ -21,7 +21,7 @@ async def make_travel_planning_call(phone_number: str = "+000000000000"):
     
     # Create SIP participant for outbound call
     request = api.CreateSIPParticipantRequest(
-        sip_trunk_id="ST_riQTKkDSdzMD",  # Replace with your actual SIP trunk ID
+        sip_trunk_id="----",  # Replace with your actual SIP trunk ID
         sip_call_to=phone_number,
         room_name=room_name,
         participant_identity="travel_caller",
@@ -74,4 +74,5 @@ if __name__ == "__main__":
     asyncio.run(make_call_interactive())
     
     # For direct call (uncomment and modify):
+
     # asyncio.run(make_travel_planning_call("+1234567890"))
